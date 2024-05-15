@@ -261,7 +261,7 @@ hostAliases: []
   #     - "my.host.com"
 
 ingress:
-  enabled: true
+  enabled: false
   # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
   # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
   ingressClassName: nginx
@@ -297,14 +297,18 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+  # tls: 
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - poc-login-service.adldigitalservice.com
 
-resources: {}
-#  limits:
-#    cpu: 100m
-#    memory: 128Mi
-#  requests:
-#    cpu: 100m
-#    memory: 128Mi
+resources: 
+ limits:
+   cpu: 1500m
+   memory: 2Gi
+ requests:
+   cpu: 1000m
+   memory: 512Mi
 
 ## Node labels for pod assignment
 ## ref: https://kubernetes.io/docs/user-guide/node-selection/
